@@ -62,8 +62,9 @@ public class CipherUtils
 	}
 
 
-//    public static void main(String args[])
-//    {
+    public static void main(String args[])
+    {
+    
 //    	String inFileName;
 //    	Scanner keyboard = new Scanner(System.in);
 //    	System.out.println("Enter the path of the file to be encrypted: ");
@@ -100,5 +101,5 @@ public class CipherUtils
 //    	/*             Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
 //            final SecretKeySpec secretKey = new SecretKeySpec(key, "AES");
 //            cipher.init(Cipher.ENCRYPT_MODE, secretKey); */
-//    }
+    }
 }
