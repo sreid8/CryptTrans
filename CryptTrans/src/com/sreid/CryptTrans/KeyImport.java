@@ -33,12 +33,16 @@ public class KeyImport {
 		byte[] keyBytes = new byte[32];
 		String keyLoc = " ";
 		String OS = System.getProperty("os.name");
-		if(OS.contains("Windows")==true) {
+		if(OS.contains("Windows") == true) {
 			//Windows OS
 			keyLoc = "C:\\key.aes";
 		}
-		else if(OS.contains("Linux")==true) {
+		else if(OS.contains("Linux") == true) {
 			keyLoc = "/usr/local/key.aes";
+		}
+		else if(OS.contains("Mac OS X") == true) {
+			//Alert user that Mac OS not supported yet.
+			return null;
 		}
 		try {
 			FileInputStream inFile = new FileInputStream(keyLoc);
