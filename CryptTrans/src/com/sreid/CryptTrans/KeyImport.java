@@ -4,7 +4,8 @@ import java.io.FileNotFoundException;
 import java.io.FileInputStream;
 import java.io.IOException;
 
-/** KeyImport class. Reads a file where the AES key is stored. Later addition may be
+/** 
+ * KeyImport class. Reads a file where the AES key is stored. Later addition may be
  * to generate the key internally and store it locally. Or produce a separate application to produce
  * keys. The main issue is entropy. As of now, I'm generating keys by slamming on the keyboard for a
  * while and echoing that into a sha1sum. It's not too secure as I'm sure a rainbow table for sha1 exists,
@@ -35,13 +36,17 @@ public class KeyImport {
 		String OS = System.getProperty("os.name");
 		if(OS.contains("Windows") == true) {
 			//Windows OS
-			keyLoc = "C:\\key.aes";
+			//should be in %UserProfile%\CryptTrans\key.aes... possibly make CryptTrans folder hidden?
+			keyLoc = null;
 		}
 		else if(OS.contains("Linux") == true) {
-			keyLoc = "/usr/local/key.aes";
+			//Linux OS
+			//should be in ~/.CryptTrans/key.aes
+			keyLoc = null;
 		}
 		else if(OS.contains("Mac OS X") == true) {
 			//Alert user that Mac OS not supported yet.
+			//I need to own a Mac before I can fix this
 			return null;
 		}
 		try {
