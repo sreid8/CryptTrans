@@ -15,7 +15,27 @@ public class StartUpDialog extends Dialog {
 	protected Object result;
 	protected Shell shlCrypttransConfiguration;
 	
-	public static String ret;
+	private static String ret;
+	
+	private static SelectionAdapter clientListener = new SelectionAdapter() {
+		@Override
+		public void widgetSelected(SelectionEvent e) {
+			if (e.getSource() instanceof StartUpDialog) {
+				StartUpDialog.ret = "client";
+			}
+		}
+	};
+		
+	private static SelectionAdapter serverListener = new SelectionAdapter() {
+		@Override
+		public void widgetSelected(SelectionEvent e) {
+			if (e.getSource() instanceof StartUpDialog) {
+				StartUpDialog.ret = "server";
+			}
+		}		
+	};
+	
+	
 
 	/**
 	 * Create the dialog.
@@ -25,6 +45,7 @@ public class StartUpDialog extends Dialog {
 	public StartUpDialog(Shell parent, int style) {
 		super(parent, style);
 		setText("CryptTrans Configuration");
+		this.open();
 	}
 
 	/**
@@ -43,6 +64,7 @@ public class StartUpDialog extends Dialog {
 		}
 		return result;
 	}
+	
 
 	/**
 	 * Create contents of the dialog.
@@ -51,7 +73,7 @@ public class StartUpDialog extends Dialog {
 		
 		shlCrypttransConfiguration = new Shell(getParent(), getStyle());
 		shlCrypttransConfiguration.setSize(318, 163);
-		shlCrypttransConfiguration.setText("CryptTrans Configuration");
+		shlCrypttransConfiguration.setText("CryptTranStartUpDialog dia = new StartUpDialog();s Configuration");
 		
 		Label lblPleaseChooseWhether = new Label(shlCrypttransConfiguration, SWT.WRAP | SWT.CENTER);
 		lblPleaseChooseWhether.setBounds(10, 10, 302, 35);
@@ -60,14 +82,7 @@ public class StartUpDialog extends Dialog {
 		Button btnNewButton = new Button(shlCrypttransConfiguration, SWT.NONE);
 		btnNewButton.setBounds(10, 70, 84, 25);
 		btnNewButton.setText("Server");
-		btnNewButton.addSelectionListener(new SelectionAdapter() {
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				if (e.getSource() instanceof StartUpDialog) {
-					StartUpDialog.ret = "server";
-				}
-			}
-		});
+		btnNewButton.addSelectionListener(StartUpDialog.serverListener);
 		
 		Button btnNewButton_1 = new Button(shlCrypttransConfiguration, SWT.NONE);
 		btnNewButton_1.setBounds(112, 101, 84, 25);
@@ -76,14 +91,7 @@ public class StartUpDialog extends Dialog {
 		Button btnNewButton_2 = new Button(shlCrypttransConfiguration, SWT.NONE);
 		btnNewButton_2.setBounds(220, 70, 84, 25);
 		btnNewButton_2.setText("Client");
-		btnNewButton_2.addSelectionListener(new SelectionAdapter() {
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				if (e.getSource() instanceof StartUpDialog) {
-					StartUpDialog.ret = "client";
-				}
-			}
-		});
+		btnNewButton_2.addSelectionListener(StartUpDialog.clientListener);
 
 		
 
@@ -92,4 +100,5 @@ public class StartUpDialog extends Dialog {
 	public String getResponse() {
 		return ret;
 	}
+	
 }
