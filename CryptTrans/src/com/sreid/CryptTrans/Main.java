@@ -17,8 +17,8 @@ public class Main {
 		// TODO Auto-generated method stub
 		Display display = new Display();
 		Shell shell = new Shell();
-		StartUpDialog dia = new StartUpDialog(shell, SWT.NONE);
-		System.out.println(dia.getResponse());
+		StartDialog dia = new StartDialog(shell);
+		System.out.println(dia.getReturnCode());
 	}
 
 }
