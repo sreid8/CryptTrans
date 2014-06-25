@@ -17,7 +17,6 @@ public class ClientWindow {
 	 * Default constructor
 	 */
 	public ClientWindow() {
-		this.open();
 	}
 
 	/**

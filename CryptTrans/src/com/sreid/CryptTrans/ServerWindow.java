@@ -16,7 +16,6 @@ public class ServerWindow {
 	 * Constructor
 	 */
 	public ServerWindow() {
-		this.open();
 	}
 	
 	/**
