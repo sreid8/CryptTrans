@@ -20,6 +20,15 @@ import org.apache.commons.logging.LogFactory;
 
 //STILL NEEDS TO BE MODIFIED TO HANDLE KEY IMPORT STRING
 
+/**
+ * @deprecated
+ * Used to prove AES working... but since I'm going to be using some Asymmetric crypto too,
+ * the idea that this is "CipherUtils" is not a good design choice. This code is now in 
+ * AESCipher and asymmetric stuff is going to be in something like RSACipher
+ * @author sean
+ *
+ */
+
 public class CipherUtils
 {
 
