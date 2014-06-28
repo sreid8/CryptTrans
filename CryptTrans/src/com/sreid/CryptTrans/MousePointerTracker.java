@@ -14,6 +14,7 @@ import org.eclipse.swt.widgets.Shell;
 /**
  * This class tracks the mouse pointer across the shell to get entropy for key generation.
  * @author sreid
+ * @deprecated marking as deprecated because I cannot at ALL vouch for how random this is... for now using SecureRandom class
  *
  */
 public class MousePointerTracker {
