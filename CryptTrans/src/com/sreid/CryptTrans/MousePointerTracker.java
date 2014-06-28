@@ -78,6 +78,10 @@ public class MousePointerTracker {
 			//byteList.add(temp[0]);
 			//byteList.add(temp[1]);
 		}
+		
+		
+		//Oh, this is wrong. I need to take only random bits from this massive amount I'm generating. Just saying.
+		//This is definitely rough.
 		Byte[] ret = byteList.toArray(new Byte[byteList.size()]);
 		return ret; 
 	}
