@@ -16,7 +16,6 @@ public class Main {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		
 		int result;
 		Display display = Display.getCurrent();
 		Shell shell = new Shell(display);
