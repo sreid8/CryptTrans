@@ -1,8 +1,8 @@
 package com.sreid.CryptTrans;
 
 import org.eclipse.jface.dialogs.MessageDialog;
-import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.MessageBox;
 import org.eclipse.swt.widgets.Shell;
 
 
@@ -20,6 +20,7 @@ public class Main {
 		Display display = Display.getCurrent();
 		Shell shell = new Shell(display);
 		do {
+			
 			MessageDialog dialog = new MessageDialog(shell, "CryptTrans Configuration", null,
 			    "Please decide whether you would like CryptTrans to start"
 			    + " in Client or Server mode.", MessageDialog.QUESTION, new String[] { "Client",
