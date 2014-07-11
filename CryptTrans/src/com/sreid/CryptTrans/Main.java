@@ -1,6 +1,7 @@
 package com.sreid.CryptTrans;
 
 import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.jface.dialogs.ProgressIndicator;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.MessageBox;
 import org.eclipse.swt.widgets.Shell;
@@ -9,6 +10,7 @@ import org.eclipse.swt.widgets.Shell;
 /** 
  * The start of the program. Manages the windows and starts in either Server or
  * Client mode and with or without a GUI
+ * No CLI mode implemented yet... but I really want one eventually.
  * @author sreid
  *
  */
@@ -19,6 +21,7 @@ public class Main {
 		int result;
 		Display display = Display.getCurrent();
 		Shell shell = new Shell(display);
+		
 		do {
 			
 			MessageDialog dialog = new MessageDialog(shell, "CryptTrans Configuration", null,

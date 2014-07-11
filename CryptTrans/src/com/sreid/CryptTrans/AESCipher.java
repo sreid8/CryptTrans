@@ -12,30 +12,46 @@ import javax.crypto.spec.SecretKeySpec;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
+//need to implement this class as a runnable thread. 
 
 /**
  * Provides AES encryption and decryption capability
  * @author sreid
  *
  */
-public class AESCipher {
+public class AESCipher implements Runnable {
 	//CLASS IS USED FOR ENCRYPTION. NEEDS TO HAVE MAIN REMOVED AND NEEDS TO REMOVE USER INTERACTION PARTS
 
 	//STILL NEEDS TO BE MODIFIED TO HANDLE KEY IMPORT STRING
 
-	    static Log log = LogFactory.getLog(AESCipher.class);
+	    //static Log log = LogFactory.getLog(AESCipher.class);
 
-	    private static byte[] key = "thisIsASecretKey".getBytes();
-
-		public static void encrypt(InputStream is, OutputStream os) throws Exception {
+	    private byte[] key;
+	    private InputStream inStream;
+	    private OutputStream outStream;
+	    private int cryptMode = 0;
+		
+	    public AESCipher(InputStream is, OutputStream os, byte[] k, int mode) {
+	    	//init all required objects
+	    	//InputStream
+	    	//Output stream
+	    	//key
+	    	//mode
+	    	key = k;
+	    	inStream = is;
+	    	outStream = os;
+	    	cryptMode = mode;
+		}
+	    
+	    public void encrypt(InputStream is, OutputStream os) throws Exception {
 			encryptOrDecrypt(Cipher.ENCRYPT_MODE, is, os);
 		}
 
-		public static void decrypt(InputStream is, OutputStream os) throws Exception {
+		public void decrypt(InputStream is, OutputStream os) throws Exception {
 			encryptOrDecrypt(Cipher.DECRYPT_MODE, is, os);
 		}
 
-		private static void encryptOrDecrypt(int mode, InputStream is, OutputStream os) throws Exception {
+		private void encryptOrDecrypt(int mode, InputStream is, OutputStream os) throws Exception {
 
 			Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
 	        final SecretKeySpec secretKey = new SecretKeySpec(key, "AES");
@@ -52,7 +68,7 @@ public class AESCipher {
 			}
 		}
 
-		private static void doCopy(InputStream is, OutputStream os) throws IOException {
+		private void doCopy(InputStream is, OutputStream os) throws IOException {
 			byte[] bytes = new byte[64];
 			int numBytes;
 			while ((numBytes = is.read(bytes)) != -1) {
@@ -62,4 +78,31 @@ public class AESCipher {
 			os.close();
 			is.close();
 		}
+
+		@Override
+		public void run() {
+			if (null == key || null == inStream || null == outStream) {
+				return;
+			}
+			//start encryption
+			if (cryptMode == Cipher.ENCRYPT_MODE) {
+				try {
+					this.encrypt(inStream, outStream);
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			if (cryptMode == Cipher.DECRYPT_MODE) {
+				try {
+					this.decrypt(inStream, outStream);
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			
+		}
+		
+		
 }
