@@ -27,7 +27,7 @@ public class ThreadPooledServer implements Runnable{
     }
 
     public void run(){
-        synchronized(this){ThreadPooledServer server = new ThreadPooledServer(9000);
+        synchronized(this){ThreadPooledServer server = new ThreadPooledServer(serverPort);
         new Thread(server).start();
 
         try {
@@ -78,7 +78,7 @@ public class ThreadPooledServer implements Runnable{
         try {
             this.serverSocket = new ServerSocket(this.serverPort);
         } catch (IOException e) {
-            throw new RuntimeException("Cannot open port 8080", e);
+            throw new RuntimeException("Cannot open port " + serverPort, e);
         }
     }
 }
