@@ -26,6 +26,17 @@ public class ThreadPooledServer implements Runnable{
         this.serverPort = port;
     }
 
+    //this entire run method needs to be rewritten
+    //basically......
+    /*
+     * (non-Javadoc)
+     * On new connection, we want to open a thread for the client.
+     * So when someone connects, we need to save the port info and then open a WorkerRunnable
+     * I need to read about the other important considerations as well as this class will manage
+     * the active threads and open available threads in the pool
+     * @see java.lang.Runnable#run()
+     */
+    @Override
     public void run(){
         synchronized(this){ThreadPooledServer server = new ThreadPooledServer(serverPort);
         new Thread(server).start();
