@@ -18,7 +18,7 @@ public class RSAKeyPairFactory {
 	public static KeyPair getRSAKeyPair(int keySize) throws GeneralSecurityException {
 		if (keySize >= 2048 && keySize % 8 == 0) {
 			KeyPairGenerator kpg = KeyPairGenerator.getInstance("RSA");
-			kpg.initialize(4096); 
+			kpg.initialize(keySize); 
 			KeyPair kp = kpg.genKeyPair();
 			return kp;
 		}

@@ -19,7 +19,7 @@ public class ServerWindow {
 	private ThreadPooledServer server;
 	/** The port spinner */
 	private Spinner portSpinner;
-	
+
 	/**
 	 * Constructor
 	 */
@@ -49,7 +49,6 @@ public class ServerWindow {
 		serverActionButton.setBounds(352, 238, 84, 25);
 		serverActionButton.setText("Start Server");
 		serverActionButton.addListener(SWT.Selection, buttonListener);
-		
 
 		Label lblNewLabel = new Label(shlCrypttransserverMode, SWT.NONE);
 		lblNewLabel.setEnabled(false);
@@ -70,7 +69,7 @@ public class ServerWindow {
 	 * @param port
 	 */
 	protected void startServer(int port) {
-		
+
 		server = new ThreadPooledServer(port);
 		server.run();
 		MessageDialog
@@ -78,18 +77,20 @@ public class ServerWindow {
 						"Server Running",
 						"The server is running now. Close the application to shut it down.");
 	}
-	
+
 	/** Listener which will be called when the start server button is pressed */
 	private Listener buttonListener = new Listener() {
 
 		@Override
 		public void handleEvent(Event event) {
-			if (portSpinner != null && (portSpinner.getSelection() >= portSpinner.getMinimum() && portSpinner.getSelection() <= portSpinner.getMaximum())) {
+			if (portSpinner != null
+					&& (portSpinner.getSelection() >= portSpinner.getMinimum() 
+					&& portSpinner.getSelection() <= portSpinner.getMaximum())) {
 				startServer(portSpinner.getSelection());
 			}
-			
+
 		}
-		
+
 	};
 
 }
