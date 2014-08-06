@@ -71,5 +71,14 @@ public class ClientWindow {
 			}
 		}
 	}
+	
+	/**
+	 * Uses the Text fields for requested file and destination file 
+	 * to start a threaded job to get the requested file
+	 */
+	private void getFile() {
+		
+		
+	}
 
 }
